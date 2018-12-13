@@ -3,7 +3,7 @@ body,html {
   min-height: 100%;
 }
 
-.bg-color {
+.black-bg-color {
   background-color: #000000;
 }
 
@@ -11,10 +11,22 @@ header {
   width: 100%;
   height: 100%;
   min-height: 100%;
+  color: #ffffff;
+  position: relative;
+}
+
+header::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background: url("../images/hero.jpg") no-repeat center center;
   background-size: cover;
-  color: #ffffff;
   z-index: -10;
+  height: 100%;
+  width: 100%;
 }
 
 h1,h2,h3 {
@@ -64,64 +76,33 @@ p.description {
   padding: 6.25rem 0px;
   height: auto;
   position: relative;
-  z-index: 1000;
+  z-index: 1;
 }
 
-.section-bg-color {
-  background-color: #f8f9f9;
+.section-bg-color-1 {
+  background-color: #ffffff;
+  /* background-color: red; */
 }
+
+.section-bg-color-2 {
+  background-color: #f8f9f9;
+  /* background-color: red; */
+}
+
+/* O NAS */
+
 
 /* PARALLAX */
 
-.parallax {
-  height: 250px;
-  overflow: hidden;
-}
-
-.inner-parallax {
-  perspective: 1px;
-  transform-style: preserve-3d;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.bg-parallax {
-  box-sizing: border-box;
-  min-height: 100%;
-  position: relative;
-  transform-style: inherit;
-  z-index: 100;
-  height: 150px;
-}
-
-.bg-parallax, .bg-parallax::before {
-  background: 50% 50% / cover;
-}
-
-
-.bg-parallax::before {
-  position: absolute;
-  display: block;
-
-  content: '';
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
+.parallax-1 {
   width: 100%;
-  background: url("../images/parallax.jpg");
-  transform-origin: center center 0;
-  display: block;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  z-index: 100;
+  height: 200px;
 }
 
+.parallax-window {
+    height: 400px;
+    background: transparent;
+}
 
 
 /* KIERUNKI DZIAŁALNOŚCI */
@@ -161,6 +142,25 @@ p.description {
   text-transform: uppercase;
   font-size: 0.8125rem;
   letter-spacing: 1.5px;
+}
+
+
+.google-map {
+  width: 100% !important;
+  height: 40vh !important;
+  margin: 0 auto!important;
+  padding: 0 !important;
+  max-width: 100%;
+}
+
+.google-map .row {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.google-map iframe {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 
@@ -224,13 +224,7 @@ footer a:hover {
   transform: translate(0%) !important;
 }
 
-.slide-left {
-  transform: translateX(-50px);
-}
 
-.slide-right {
-  transform: translateX(50px);
-}
 
 
 
@@ -240,6 +234,13 @@ footer a:hover {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  .slide-left {
+    transform: translateX(-50px);
+  }
+
+  .slide-right {
+    transform: translateX(50px);
+  }
 
 
 }
