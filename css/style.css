@@ -105,7 +105,7 @@ p.description {
 .bg-parallax::before {
   position: absolute;
   display: block;
-  
+
   content: '';
   top: 0;
   left: 0;
@@ -189,8 +189,14 @@ footer i {
 
 footer a {
   padding-left: 0 !important;
-  color: #ffffff;
+  color: #777777;
   width: auto;
+  line-height: 10px;
+  font-size: 0.9375rem;
+}
+
+footer a:hover {
+  color: #ffffff !important;
 }
 
 .copy {
