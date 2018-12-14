@@ -1,6 +1,6 @@
 $(function(){
 
-// SCROLL TO
+/******* SCROLL TO ********/
 
 $('.scroll-link').on('click', function(){
   var $target = this.hash;
@@ -14,6 +14,21 @@ $('.scroll-link').on('click', function(){
 });
 
 });
+
+
+
+/***** PARALLAX EFFECT *******/
+
+function parallax_effect() {
+  var parallaxes = document.querySelectorAll('.parallax-js');
+  var scrollY = window.scrollY;
+
+  parallaxes.forEach(parallax => {
+      var elTop = parallax.offsetTop;
+      parallax.style.backgroundPosition = '50% '+ Math.round((elTop - scrollY)*3/8)+'px';
+  });
+}
+
 
 /******** SLIDE ELEMENT WHEN SCROLL ********/
 
@@ -37,4 +52,5 @@ function sliderElement() {
 };
   window.addEventListener('scroll', function(){
     sliderElement();
+    parallax_effect();
   });
