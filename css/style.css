@@ -4,7 +4,7 @@ body,html {
 }
 
 .black-bg-color {
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0,0,0, 0.8);
 }
 
 header {
@@ -30,7 +30,6 @@ header::before {
    right: 0;
 }
 
-
 h1,h2,h3 {
   text-transform: uppercase;
   font-weight: bold;
@@ -43,12 +42,12 @@ p {
   line-height: 1.7;
 }
 
-.navbar-opacity {
-   opacity: .8;
+.navbar {
+   transition: all .7s ease-in-out;
 }
 
 nav ul li a {
-  color: #ffffff !important;
+  color: #fff !important;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
@@ -59,11 +58,31 @@ nav ul li a:hover {
   text-decoration: none;
 }
 
+.active-link {
+   color: rgb(173, 82, 145) !important;
+}
+
+.badge {
+   background-color: rgb(173, 82, 145) !important;
+}
+
 h1 {
   color: #ffffff;
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
   font-size: 60px;
   font-size: 4.5rem;
+}
+
+.arrow-down {
+   position: absolute;
+   bottom: 2%;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.arrow-down i {
+   font-size: 6rem;
+   color: #ffffff;
 }
 
 p.description {
@@ -170,6 +189,7 @@ p.description {
 
 footer {
   height: auto;
+  background-color: rgba(0,0,0, 1);
 }
 
 
@@ -258,14 +278,18 @@ footer a:hover {
 
 
 @media (max-width: 768px) {
-   .navbar-opacity {
-     opacity: 1;
+   .navbar {
+     background-color: rgba(0,0,0,1);
    }
 }
 
 @media (max-width: 576px) {
    h1 {
       font-size: 60px;
-      font-size: 3.5rem;
+      font-size: 3rem;
+   }
+
+   .arrow-down i {
+      font-size: 4rem;
    }
 }
