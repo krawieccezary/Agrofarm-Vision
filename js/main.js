@@ -136,3 +136,51 @@ function sliderElement() {
     black_bg_nav();
     switch_nav();
   });
+
+
+
+
+/************ WALIDACJA FORMULARZA **************/
+
+const form = document.getElementById('contactForm');
+const inputs = form.querySelectorAll('input[required], textarea[required]');
+
+//wyłączamy domyślną walidację
+form.setAttribute('novalidate', true);
+
+function showFieldError(elem){
+   const formGroup = elem.closest('.formGroup');
+   const fieldError = formGroup.querySelector('.fieldError');
+
+   if (fieldError === null) {
+      const errorText = elem.dataset.error;
+      const divError = document.createElement('div');
+      divError.classList.add('fieldError');
+      divError.innerText = errorText;
+      formGroup.appendChild('divError');
+   }
+}
+
+function hideFieldError(elem) {
+   const formGroup = elem.closest('.formGroup');
+   const fieldError = formGroup.querySelector('.fieldError');
+
+   if(fieldError !== null){
+      fieldError.remove();
+   }
+}
+
+[...inputs].forEach(elem => {
+   elem.addEventListener('input', function(){
+      if(!this.checkValidate()){
+         this.classList.add('error');
+      } else {
+         this.classList.remove('error');
+         hideFieldError(this);
+      }
+   });
+});
+
+function checkFieldsErrors(elements){
+   let fieldsAreValid = true;
+}

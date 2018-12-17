@@ -183,6 +183,21 @@ p.description {
   height: 100% !important;
 }
 
+/************ WALIDACJA FORMULARZA **************/
+
+.form input[type=text].error,
+.form input[type=email].error,
+.form textarea.error {
+    border-color:##E01546;
+}
+.field-error {
+    color:##E01546;
+    padding:0.5rem 0;
+    font-size:0.8rem;
+}
+
+
+
 
 
 /* FOOTER */

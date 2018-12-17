@@ -183,31 +183,31 @@
           <div class="row justify-content-center">
             <div class="col-10">
               <h2 class="mb-4 mb-sm-5 text-center">skontaktuj się z nami</h2>
-              <form>
+              <form class="form" id="contactForm" method="POST" action="send-script.php">
                 <div class="form-row">
                   <div class="col-sm-6">
                     <fieldset class="form-group">
-                      <label for="imie">twoje imie</label>
-                      <input type="text" class="form-control" id="imie">
+                      <label for="name">twoje imie</label>
+                      <input type="text" name="name" required class="form-control" id="name" data-error="Wypełnij to pole" pattern="[a-zA-ZąĄććęęłŁńŃóÓśŚżŻŹŹ ]+">
                     </fieldset>
                   </div>
                   <div class="col-sm-6">
                     <fieldset class="form-group">
                       <label for="email">twój email</label>
-                      <input type="email" class="form-control" id="email">
+                      <input type="email" name="email" required class="form-control" id="email" data-error="Wpisz poprawny email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
                       <small class="text-muted">Twój adres e-mail jest z nami bezpieczny.</small>
                     </fieldset>
                   </div>
                 </div>
                 <fieldset class="form-group">
-                  <label for="temat">temat</label>
-                  <input type="text" class="form-control" id="temat">
+                  <label for="subject">temat</label>
+                  <input type="text" name="subject" required data-error="Musisz wypełnić pole" class="form-control" id="subject" pattern=".+">
                 </fieldset>
                 <fieldset class="form-group">
-                  <label for="exampleTextarea">Twoja wiadomość</label>
-                  <textarea class="form-control" id="message" rows="8"></textarea>
+                  <label for="message">Twoja wiadomość</label>
+                  <textarea class="form-control" name="message" required data-error="Musisz wypełnić pole" id="message" rows="8" pattern=".+"></textarea>
                 </fieldset>
-                <button type="submit" class="btn btn-primary btn-block btn-lg mx-auto d-block">wyślij</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg mx-auto d-block submit-btn">wyślij</button>
               </form>
             </div>
           </div>
@@ -254,26 +254,28 @@
               </ul>
             </div>
 
-            <div class="col-sm-5 col-md-3 text-center text-sm-left">
-              <h3>
-                <span class="d-none d-md-inline">kontakt</span>
-                <span class="d-inline d-md-none">agrofarm vision</span>
+            <div class="col-10 col-md-6">
+               <h3 class="text-center text-md-left">
+                <span class="d-none d-md-inline">agrofarm vision sp. z o.o. sp.k.</span>
+                <span class="d-inline d-md-none">agrofarm vision sp. z o.o. sp.k.</span>
               </h3>
+               <div class="row">
+            <div class="col-12 col-sm-6 text-center text-sm-left">
                 <div class="footer-item clearfix">
                   <i class="fas fa-map-marker-alt align-top"></i>
                   <div class="kontakt-text d-inline-block">
-                    <p class="text-left">ul. Lea 4/7 <br>30-049 Kraków</p>
+                    <p class="text-left">Lednica Górna 491 <br>32-020 (Wieliczka) <br> Lednica Górna</p>
                   </div>
                 </div>
                 <div class="footer-item">
                   <i class="fa fa-info-circle align-top"></i>
                   <div class="kontakt-text d-inline-block">
-                    <p class="text-left">NIP xxxxxxxxxx <br>REGON xxxxxxxxx</p>
+                    <p class="text-left">NIP 6832102033</p>
                   </div>
                 </div>
             </div>
 
-            <div class="col-sm-5 col-md-3 text-center text-sm-left mt-sm-4 mt-5">
+            <div class="col-12 col-sm-6 text-center text-sm-left mt-4 mt-sm-0">
               <div class="footer-item clearfix">
                 <i class="fas fa-phone align-top"></i>
                 <div class="kontakt-text d-inline-block">
@@ -287,7 +289,8 @@
                 </div>
               </div>
            </div>
-
+           </div>
+            </div>
           </div>
         </div>
         <div class="copy">
