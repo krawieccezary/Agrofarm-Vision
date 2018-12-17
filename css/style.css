@@ -20,7 +20,7 @@ header {
 }
 
 header::before {
-   background-color: rgba(0,0,0,.4);
+   background-color: rgba(0,0,0,.3);
    position: absolute;
    content: '';
    height: 100%;
@@ -47,22 +47,17 @@ p {
 }
 
 nav ul li a {
-  color: #fff !important;
+  color: #ffffff !important;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
-}
-
-nav ul li a:hover {
-  color: #ffffff;
-  text-decoration: none;
 }
 
 .active-link {
    color: rgb(173, 82, 145) !important;
 }
 
-.badge {
+.purple-bg-color {
    background-color: rgb(173, 82, 145) !important;
 }
 
@@ -164,19 +159,61 @@ p.description {
   letter-spacing: 1.5px;
 }
 
+#kontakt button {
+   letter-spacing: 1px;
+}
+
+#kontakt button:hover {
+   background-color: rgb(157, 62, 128) !important;
+}
+
 /************ WALIDACJA FORMULARZA **************/
 
 .form input[type=text].error,
 .form input[type=email].error,
 .form textarea.error {
-    border-color:##E01546;
+    border-color: #E01546;
 }
 .field-error {
-    color:##E01546;
+    color: #E01546;
     padding:0.5rem 0;
     font-size:0.8rem;
 }
+   
+/******** LOADING SEND DATA *********/
 
+.element-is-busy {
+    position: relative;
+    pointer-events: none;
+    opacity:0.5;
+}
+
+.element-is-busy::after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-right-color: rgba(0,0,0,0.7);
+    transform: translate(-50%, -50%) rotate(0deg);
+    content:'';
+    animation: rotateSingleLoading 0.3s infinite linear;
+    z-index: 10;
+}
+
+@keyframes rotateSingleLoading {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+/******** GOOGLE MAP **********/
 
 .google-map {
   width: 100% !important;

@@ -139,7 +139,6 @@ function sliderElement() {
 
 
 
-
 /************ WALIDACJA FORMULARZA **************/
 
 const form = document.getElementById('contactForm');
@@ -149,21 +148,22 @@ const inputs = form.querySelectorAll('input[required], textarea[required]');
 form.setAttribute('novalidate', true);
 
 function showFieldError(elem){
-   const formGroup = elem.closest('.formGroup');
-   const fieldError = formGroup.querySelector('.fieldError');
+   const formGroup = elem.closest('.form-group');
+   console.log(formGroup);
+   const fieldError = formGroup.querySelector('.field-error');
 
    if (fieldError === null) {
       const errorText = elem.dataset.error;
       const divError = document.createElement('div');
-      divError.classList.add('fieldError');
+      divError.classList.add('field-error');
       divError.innerText = errorText;
-      formGroup.appendChild('divError');
+      formGroup.appendChild(divError);
    }
 }
 
 function hideFieldError(elem) {
-   const formGroup = elem.closest('.formGroup');
-   const fieldError = formGroup.querySelector('.fieldError');
+   const formGroup = elem.closest('.form-group');
+   const fieldError = formGroup.querySelector('.field-error');
 
    if(fieldError !== null){
       fieldError.remove();
@@ -172,7 +172,7 @@ function hideFieldError(elem) {
 
 [...inputs].forEach(elem => {
    elem.addEventListener('input', function(){
-      if(!this.checkValidate()){
+      if(!this.checkValidity()){
          this.classList.add('error');
       } else {
          this.classList.remove('error');
@@ -185,7 +185,7 @@ function checkFieldsErrors(elements){
    let fieldsAreValid = true;
 
    [...elements].forEach(elem => {
-      if(checkValidate(elem)){
+      if(elem.checkValidity()){
          hideFieldError(elem);
          elem.classList.remove('error');
       } else {
@@ -197,10 +197,33 @@ function checkFieldsErrors(elements){
    return fieldsAreValid;
 };
 
-form.addEventListener('sutmit', e => {
+form.addEventListener('submit', e => {
    e.preventDefault();
 
    if (checkFieldsErrors(inputs)){
+      const elements = form.querySelectorAll('input:not(:disabled), textarea:not(:disabled)');
+      const dataToSend = new FormData();
 
+      [...elements].forEach(el => dataToSend.append(el.name,el.value));
+
+      const button = form.querySelector('input[type=submit]');
+      button.disabled = true;
+      button.classList.add('element-is-busy');
+
+      const action = form.getAttribute('action');
+      const method = form.getAttribute('method');
+
+      fetch(action, {
+         method: method,
+         body: dataToSend
+      })
+      .then (ret => ret.json())
+      .then (ret => {
+         button.disabled = false;
+         button.classList.remove('element-is-busy');
+      }).catch(_ => {
+         button.disabled = false;
+         button.classList.remove('element-is-busy');
+      });
    }
 });
