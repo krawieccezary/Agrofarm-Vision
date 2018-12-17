@@ -183,4 +183,24 @@ function hideFieldError(elem) {
 
 function checkFieldsErrors(elements){
    let fieldsAreValid = true;
-}
+
+   [...elements].forEach(elem => {
+      if(checkValidate(elem)){
+         hideFieldError(elem);
+         elem.classList.remove('error');
+      } else {
+         showFieldError(elem);
+         elem.classList.add('error');
+         fieldsAreValid = false;
+      }
+   });
+   return fieldsAreValid;
+};
+
+form.addEventListener('sutmit', e => {
+   e.preventDefault();
+
+   if (checkFieldsErrors(inputs)){
+
+   }
+});
