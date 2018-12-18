@@ -139,6 +139,7 @@ function sliderElement() {
 
 
 
+
 /************ WALIDACJA FORMULARZA **************/
 
 const form = document.getElementById('contactForm');
@@ -149,7 +150,6 @@ form.setAttribute('novalidate', true);
 
 function showFieldError(elem){
    const formGroup = elem.closest('.form-group');
-   console.log(formGroup);
    const fieldError = formGroup.querySelector('.field-error');
 
    if (fieldError === null) {
@@ -206,7 +206,7 @@ form.addEventListener('submit', e => {
 
       [...elements].forEach(el => dataToSend.append(el.name,el.value));
 
-      const button = form.querySelector('input[type=submit]');
+      const button = form.querySelector('[type=submit]');
       button.disabled = true;
       button.classList.add('element-is-busy');
 
@@ -221,6 +221,36 @@ form.addEventListener('submit', e => {
       .then (ret => {
          button.disabled = false;
          button.classList.remove('element-is-busy');
+
+         if (ret.errors) {
+             ret.errors.map(function(el) {
+                  return '[name="'+el+'"]'
+             });
+
+             const badFields = form.querySelectorAll(ret.errors.join(','));
+             checkFieldsErrors(badFields);
+          } else {
+             if (ret.status === 'ok') {
+                const headerKontakt = document.getElementById('header-kontakt');
+                headerKontakt.classList.add('form-success');
+                const div = document.createElement('div');
+                div.classList.add('form-send-success');
+
+
+                form.parentElement.insertBefore(div, form);
+                div.innerHTML = '<strong>Wiadomość została wysłana</strong><span>Dziękujemy za kontakt. Postaramy się odpowiedzieć jak najszybciej</span>';
+                form.remove();
+             }
+             if (ret.status === 'error') {
+                  if (document.querySelector('.send-error')) {
+                        document.querySelector('.send-error').remove();
+                  }
+                 const div = document.createElement('div');
+                 div.classList.add('send-error');
+                 div.innerText = 'Wysłanie wiadomości nie powiodło się';
+                 button.parentElement.appendChild(div);
+              }
+          }
       }).catch(_ => {
          button.disabled = false;
          button.classList.remove('element-is-busy');

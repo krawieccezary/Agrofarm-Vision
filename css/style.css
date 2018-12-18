@@ -179,6 +179,47 @@ p.description {
     padding:0.5rem 0;
     font-size:0.8rem;
 }
+
+.form .send-error {
+    display:inline-block;
+    font-family: sans-serif;
+    padding:1rem 2rem;
+    color:red;
+
+    @media screen and (max-width:500px) {
+            text-align:center;
+            display: block;
+    }
+}
+
+.form-send-success {
+    font-family: sans-serif;
+    text-align:center;
+    font-size:2rem;
+    font-weight:bold;
+    color:#333;
+    padding:10rem 0;
+    margin:3rem auto;
+    max-width:40rem;
+}
+
+.form-send-success strong {
+    display:block;
+    margin-bottom:0.5rem;
+}
+
+.form-send-success span {
+    font-size:1rem;
+    color:#888;
+    font-weight:normal;
+    display: block;
+}
+
+.form .honey-row, #kontakt .form-success {
+    display:none !important;
+}
+
+
    
 /******** LOADING SEND DATA *********/
 
