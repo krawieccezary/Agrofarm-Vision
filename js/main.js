@@ -33,7 +33,7 @@ function black_bg_nav() {
 }
 
 
-/****** SWITCH NAV *******/
+/****** SWITCH NAV LINK *******/
 
 function switch_nav(){
    var nav = document.getElementsByClassName('navbar')[0];
@@ -75,7 +75,8 @@ function switch_nav(){
 var images = [].slice.call(document.querySelectorAll('.parallax-js'));
 
 function getViewportHeight() {
-    var a = document.documentElement.clientHeight, b = window.innerHeight;
+    var a = document.documentElement.clientHeight;
+    var b = window.innerHeight;
     return a < b ? b : a;
 }
 
@@ -109,7 +110,6 @@ function parallax_effect() {
 
 
 
-
 /******** SLIDE ELEMENT WHEN SCROLL ********/
 
 function sliderElement() {
@@ -137,6 +137,16 @@ function sliderElement() {
     switch_nav();
   });
 
+
+/******* ROTATE ARROW BUTTON ********/
+
+var arrows = document.querySelectorAll('.arrow-collapse');
+
+arrows.forEach(arrow => {
+   arrow.addEventListener('click', function(){
+      this.classList.toggle('active');
+   });
+});
 
 
 

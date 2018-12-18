@@ -53,6 +53,11 @@ nav ul li a {
   font-weight: 600;
 }
 
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+  border-color: rgba(255, 255, 255, 1);
+}
+
 .active-link {
    color: rgb(173, 82, 145) !important;
 }
@@ -128,27 +133,46 @@ p.description {
   border-radius: 5px;
   margin: 20px 0;
   padding: 50px;
+  position: relative;
+}
+
+.kierunki-item p {
+   text-align: justify;
+   /* float: left !important; */
 }
 
 .kierunki-item a {
-  text-decoration: none;
-  color: rgb(127, 159, 171);
-}
-
-.kierunki-item a:hover, .kierunki-item a:hover i{
-  color: rgb(170, 125, 125);
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
 }
 
 .kierunki-item i {
   color: rgb(127, 159, 171);
-  font-size: 24px;
-  margin-left: 5px;
+  font-size: 44px;
   cursor: pointer;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  transition: all .6s ease-in-out;
+}
+
+.kierunki-item a:hover i{
+  color: rgb(173, 82, 145) !important;
+}
+
+.kierunki-item i.active {
+  color: rgb(173, 82, 145) !important;
+  transform: rotateX(180deg);
 }
 
 .kierunki-item img {
   width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 
 
 /* KONTAKT */
@@ -283,7 +307,7 @@ footer {
 }
 
 
-h3, h2.data {
+footer h3, h2.data {
   color: #ffffff;
   font-size: 15px;
   letter-spacing: 2px;

@@ -6,6 +6,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
    $name = $_POST['name'];
    $email = $_POST['email'];
    $subject = $_POST['subject'];
+   $antiSpam = $_POST['honey'];
    $message = $_POST['message'];
    $errors = Array();
    $return = Array();
