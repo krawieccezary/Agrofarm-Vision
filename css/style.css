@@ -46,7 +46,18 @@ p {
    transition: all .7s ease-in-out;
 }
 
-nav ul li a {
+.navbar .navbar-brand {
+   opacity: 0;
+   text-transform: uppercase;
+   font-weight: bold;
+   transition: all .7s ease-in-out;
+}
+
+.navbar.black-bg-color .navbar-brand {
+   opacity: 1;
+}
+
+.navbar li.nav-item a {
   color: #ffffff !important;
   text-decoration: none;
   font-size: 14px;
